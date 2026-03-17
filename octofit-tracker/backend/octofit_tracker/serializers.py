@@ -23,6 +23,7 @@ class UserSerializer(ObjectIdStringMixin):
     class Meta:
         model = UserProfile
         fields = ['id', 'name', 'email', 'team', 'team_id', 'power_level']
+        extra_kwargs = {'email': {'required': True}}
 
     def get_team_id(self, obj):
         return str(obj.team_id) if obj.team_id is not None else None

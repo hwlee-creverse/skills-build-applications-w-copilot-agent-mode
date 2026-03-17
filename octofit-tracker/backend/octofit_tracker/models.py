@@ -36,6 +36,9 @@ class Activity(models.Model):
     class Meta:
         db_table = 'activities'
 
+    def __str__(self):
+        return f"{self.user.name} - {self.activity_type}"
+
 
 class LeaderboardEntry(models.Model):
     user = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='leaderboard_entry')
@@ -44,6 +47,9 @@ class LeaderboardEntry(models.Model):
 
     class Meta:
         db_table = 'leaderboard'
+
+    def __str__(self):
+        return f"{self.user.name} ({self.points})"
 
 
 class Workout(models.Model):
@@ -55,3 +61,6 @@ class Workout(models.Model):
 
     class Meta:
         db_table = 'workouts'
+
+    def __str__(self):
+        return f"{self.user.name} - {self.workout_name}"
